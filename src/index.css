@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html,
+  body,
+  #root {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #000000;
+    color: #f3f4f6;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+}
+
+/* Background radial gradient */
+.bg-radial-gradient {
+  background: radial-gradient(circle at center, var(--tw-gradient-from) 0%, var(--tw-gradient-via) 60%, var(--tw-gradient-to) 100%);
+}
+
+/* Custom glow utility classes */
+.glow-cyan {
+  filter: drop-shadow(0 0 15px rgba(6, 182, 212, 0.6));
+}
+
+.glow-purple {
+  filter: drop-shadow(0 0 15px rgba(168, 85, 247, 0.6));
+}
+
+.glow-amber {
+  filter: drop-shadow(0 0 15px rgba(245, 158, 11, 0.6));
+}
+
+.glow-lime {
+  filter: drop-shadow(0 0 12px rgba(214, 255, 63, 0.45));
+}
+
+/* Individual separated Nav Link Underline: draws Left to Right on hover/touch */
+.nav-item-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 0;
+  color: #8A8A8A;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-item-link:hover,
+.nav-item-link:active,
+.nav-item-link:focus {
+  color: #D6FF3F;
+}
+
+.nav-item-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #D6FF3F;
+  box-shadow: 0 0 8px rgba(214, 255, 63, 0.7);
+  border-radius: 9999px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-item-link:hover::after,
+.nav-item-link:active::after,
+.nav-item-link:focus::after {
+  transform: scaleX(1);
+}
+
+
+
+
+/* Cards: Static in normal state, subtle electric lime border glow on hover/touch */
+.interactive-card {
+  position: relative;
+  border-radius: 1rem;
+  background-color: #0A0A0A;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.interactive-card-sm {
+  position: relative;
+  border-radius: 0.75rem;
+  background-color: #0A0A0A;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.interactive-card:hover,
+.interactive-card:active,
+.interactive-card-sm:hover,
+.interactive-card-sm:active {
+  transform: translateY(-2px);
+  border-color: rgba(214, 255, 63, 0.4);
+  box-shadow: 0 0 14px rgba(214, 255, 63, 0.16), 0 8px 20px -4px rgba(0, 0, 0, 0.7);
+}
+
+/* ─────────────────────────────────────────────────────────
+   HOLOGRAPHIC CYAN APPLICATION IDENTITY (/app)
+   ───────────────────────────────────────────────────────── */
+
+@keyframes holoRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes holoNavBeam {
+  0% {
+    transform: translateX(-140px);
+  }
+
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.holo-nav-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 160px;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, rgba(92, 225, 230, 0.4), #5CE1E6, #A8F0FF, #5CE1E6, rgba(92, 225, 230, 0.4), transparent);
+  box-shadow: 0 0 10px rgba(92, 225, 230, 0.5);
+  animation: holoNavBeam 7s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+.nav-holo-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 0;
+  color: #829397;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: color 0.25s ease;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.nav-holo-link:hover,
+.nav-holo-link:active {
+  color: #5CE1E6;
+}
+
+.nav-holo-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #5CE1E6;
+  box-shadow: 0 0 8px rgba(92, 225, 230, 0.7);
+  border-radius: 9999px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-holo-link:hover::after,
+.nav-holo-link:active::after {
+  transform: scaleX(1);
+}
+
+/* Holographic Cyan Cards with perimeter travelling light beam */
+.holo-border-card {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  padding: 1px;
+  background: rgba(92, 225, 230, 0.18);
+  transition: box-shadow 0.3s ease, transform 0.25s ease;
+}
+
+.holo-border-card::before {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -60%;
+  width: 220%;
+  height: 220%;
+  background: conic-gradient(from 0deg,
+      transparent 0deg,
+      transparent 78deg,
+      rgba(92, 225, 230, 0.35) 86deg,
+      #A8F0FF 90deg,
+      rgba(92, 225, 230, 0.35) 94deg,
+      transparent 102deg,
+      transparent 360deg);
+  animation: holoRotate 7s linear infinite;
+  pointer-events: none;
+}
+
+.holo-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #0A1012;
+  border-radius: calc(0.75rem - 1px);
+  z-index: 1;
+}
+
+.holo-border-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(92, 225, 230, 0.25), 0 8px 24px -6px rgba(3, 5, 6, 0.8);
+}
